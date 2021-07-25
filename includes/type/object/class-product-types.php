@@ -30,6 +30,7 @@ class Product_Types {
 		self::register_variable_product_type();
 		self::register_external_product_type();
 		self::register_group_product_type();
+		self::register_auction_product_type();
 	}
 
 	/**
@@ -365,6 +366,26 @@ class Product_Types {
 							},
 						),
 					)
+				),
+			)
+		);
+	}
+
+	/**
+	 * Register "AuctionProduct" type.
+	 */
+	private static function register_auction_product_type() {
+		register_graphql_object_type(
+			'AuctionProduct',
+			array(
+				'description' => __( 'Auction product object', 'wp-graphql-woocommerce' ),
+				'interfaces'  => self::get_product_interfaces(),
+				'fields'      => array_merge(
+					Product::get_fields(),
+					self::get_pricing_and_tax_fields(),
+					self::get_inventory_fields(),
+					self::get_shipping_fields(),
+					self::get_virtual_data_fields()
 				),
 			)
 		);

@@ -77,6 +77,7 @@ if ( ! class_exists( 'WP_GraphQL_WooCommerce' ) ) :
 					'variable' => 'VariableProduct',
 					'external' => 'ExternalProduct',
 					'grouped'  => 'GroupProduct',
+					'auction'  => 'AuctionProduct',
 				)
 			);
 		}
